@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>react starter</title>
+    <script type="text/javascript">
+      ;(function (win, doc) {
+        function flex () {
+          var dpr = win.devicePixelRatio || 1;
+          var scale = 1 / dpr;
+          var metaEl = doc.querySelector('meta[name="viewport"]');
+          var docElement = doc.documentElement;
+          var pageWidth = docElement.getBoundingClientRect ? docElement.getBoundingClientRect().width : docElement.clientWidth;
+          var clientWidth = Math.max(pageWidth, docElement.clientWidth)
+          var docFontSize = (clientWidth * dpr) / 7.5
+          metaEl.setAttribute('content', 'width=device-width,user-scalable=no,initial-scale=' + scale + ',maximum-scale=' + scale + ',minimum-scale=' + scale + ',user-scalable=no,shrink-to-fit=no,viewport-fit=cover');
+          // 由于设置 font-size 后实际会变大，故 font-size 需设置为更小一级
+          docElement.style.fontSize = docFontSize + 'px';
+          const realSize = ~~(window.getComputedStyle(docElement).fontSize.replace('px', ''))
+          if (docFontSize !== realSize) {
+            docElement.style.fontSize = docFontSize * (docFontSize / realSize) + 'px';
+          }
+          if (clientWidth > 800) {
+            docElement.style.fontSize = '50px';
+          }
+        };
+        flex();
+      })(window, document);
+    </script>
+    <style type="text/css">
+      :root {
+        --safe-bottom: env(safe-area-inset-bottom);
+        --header-height: 88px;
+        --state-height: 60px;
+        --gray-color03: rgb(25 28 28 / 3%);
+        --gray-color05: rgb(25 28 28 / 5%);
+        --gray-color08: rgb(25 28 28 / 8%);
+        --gray-color10: rgb(25 28 28 / 10%);
+        --gray-color15: rgb(25 28 28 / 15%);
+        --gray-color20: rgb(25 28 28 / 20%);
+        --gray-color30: rgb(25 28 28 / 30%);
+        --gray-color40: rgb(25 28 28 / 40%);
+        --gray-color55: rgb(25 28 28 / 55%);
+        --gray-color70: rgb(25 28 28 / 70%);
+        --gray-color75: rgb(25 28 28 / 75%);
+        --gray-color80: rgb(25 28 28 / 80%);
+        --gray-color100: rgb(25 28 28 / 100%);
+        --text-color: #903eff;
+        --main-bgcolor: #f5f8fa;
+      }
+    </style>
+    <%- injectCss %>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <%- injectScript %>
+  </body>
+</html>
