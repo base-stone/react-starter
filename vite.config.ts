@@ -3,6 +3,7 @@ import { resolve } from 'path'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import externalGlobals from "rollup-plugin-external-globals"
 import react from '@vitejs/plugin-react'
+import mkcert from 'vite-plugin-mkcert'
 // @ts-ignore
 import { devDependencies } from './package.json'
 
@@ -31,6 +32,7 @@ export default ({ mode }: { mode: string}) => {
   return defineConfig({
     plugins: [
       react({ jsxRuntime: 'classic' }),
+      mkcert(),
       createHtmlPlugin({
         minify: true,
         template: 'public/index.html',
@@ -55,6 +57,17 @@ export default ({ mode }: { mode: string}) => {
     resolve: {
       alias: {
         '@': resolve(__dirname, './src'),
+      }
+    },
+    server: {
+      port: 8080,
+      host: '0.0.0.0',
+      proxy: {
+        '^/admin': {
+          //target: "http://192.168.32.211:8410",
+          target: 'https://anchor-manage-test.shengtian.com',
+          changeOrigin: true
+        }
       }
     }
   })

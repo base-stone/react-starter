@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --mode local_dev",
-    "build:prod": "tsc && NODE_ENV=production vite build --mode prod",
+    "build:prod": "tsc && vite build --mode prod",
     "eslint": "eslint ./src --ext tsx,ts --fix --report-unused-disable-directives --max-warnings 0",
     "prettier": "prettier --write \"./src/**/*.{tsx,ts,scss}\"",
     "stylelint": "stylelint --fix \"./src/**/*.scss\"",
@@ -35,10 +35,10 @@
     "stylelint-config-prettier": "^9.0.5",
     "stylelint-config-recommended-scss": "^13.1.0",
     "stylelint-config-standard": "^34.0.0",
-    "stylelint-config-standard-vue": "^1.0.0",
     "stylelint-order": "^6.0.3",
     "typescript": "^5.3.2",
     "vite": "^5.0.5",
-    "vite-plugin-html": "^3.2.0"
+    "vite-plugin-html": "^3.2.0",
+    "vite-plugin-mkcert": "^1.17.1"
   }
 }
